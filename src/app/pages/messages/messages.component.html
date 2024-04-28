@@ -1,5 +1,8 @@
-<h1>User: <small>{{wsService.getUser().name}}</small></h1>
+<h1>User: <small>{{wsService.getUser()?.name}}</small></h1>
 
+<button class="btn btn-danger" (click)="exit()">
+    Exit
+</button>
 <hr>
 
 <div class="row">

@@ -12,4 +12,8 @@ export class MessagesComponent {
   
   constructor(public wsService: WebsocketService){}
 
+  exit(): void {
+    this.wsService.logoutWS();
+  };
+
 }

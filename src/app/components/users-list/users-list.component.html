@@ -1,1 +1,18 @@
-<p>users-list works!</p>
+<h1>Users Connected:</h1>
+
+<hr>
+
+<ul class="list-group">
+    <li class="list-group-item"
+        *ngFor="let user of activeUsersObs$ | async">
+        {{ user.name }}
+        <span class="badge rounded-pill text-bg-primary">
+            {{ user.room }}
+        </span>
+        <br>
+        <span class="badge rounded-pill text-bg-info">
+            {{ user.id }}
+        </span>
+    </li>
+</ul>
+

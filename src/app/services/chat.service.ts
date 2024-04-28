@@ -7,20 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class ChatService {
 
-  constructor(public wsService:WebsocketService) { }
+  constructor(public wsService: WebsocketService) { }
 
 
 
   sendMessage(message: string): void {
     const payload = {
-      from: this.wsService.getUser().name,
-      message 
+      from: this.wsService.getUser()?.name,
+      message
     }
-    
+
     if (payload.message) {
       this.wsService.emit('message', payload);
     }
-  } 
+  }
 
   getMessage(): Observable<string> {
     return this.wsService.listen('new-message');
@@ -29,4 +29,14 @@ export class ChatService {
   getPrivateMessages(): Observable<any> {
     return this.wsService.listen('private-message');
   }
+
+  getActiveUsers(): Observable<any> {
+    return this.wsService.listen('active-users');
+  }
+
+
+  emitActiveUsers(): void {
+    this.wsService.emit('get-users');
+  }
+
 }
